@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Listado de categorias
+{% endblock %}
+
+{% block content %}
+
+    {% for category in categories %}
+
+        <p>El nombre de la categoria es: {{category.name}} </p>
+        <p>Su descripción es: {{category.description}} </p>
+
+    {% endfor %}
+
+{% endblock %}

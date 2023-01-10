@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Ver proveedores
+{% endblock title %}
+
+{% block content %}
+
+    {% for provider in providers %}
+
+        <p>El nombre del proveedor es: {{provider.name}} </p>
+        <p>El se encarga de proveernos de: {{provider.provides}} </p>
+
+    {% endfor %}
+
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Crear producto
+{% endblock %}
+
+{% block content %}
+
+    {% if request.method == 'GET' %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            {{form.as_table}}
+        </table>
+        <input type="submit" value="Crear Producto" style="margin: 15px;">
+    </form>
+
+    {% else %}
+        <p>Producto creado</p>
+    {% endif %}
+
+{% endblock %}

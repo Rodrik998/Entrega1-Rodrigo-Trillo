@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Listado de productos
+{% endblock %}
+
+{% block content %}
+
+    <h2>Para añadir un nuevo producto pulse el botón "Añadir"</h2> <a href="/productos/crear/" class="btn btn-primary"
+    style="margin: 15px;">Añadir</a>
+
+    {% for product in products %} 
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+            <h5 class="card-title">{{product.name}}</h5>
+            <p class="card-text">Su precio es ${{product.price}}</p>
+            {% if product.stock == True %}
+                <p>Actualmente hay stock</p>
+            {% else %}
+                <p>Actualmente, nos quedamos sin stock</p>
+            {% endif %}
+            <a href="/productos/comprar/" class="btn btn-primary">Comprar</a>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}

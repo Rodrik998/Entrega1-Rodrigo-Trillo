@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Añadir proveedor
+{% endblock title %}
+
+
+{% block content %}      
+
+    {% if request.method == 'GET' %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            {{form.as_table}}
+        </table>
+        <input type="submit" value="Añadir" style="margin: 15px;">
+    </form>
+
+    {% else %}
+        <p>Proveedor añadido</p>
+    {% endif %}
+
+{% endblock %}
