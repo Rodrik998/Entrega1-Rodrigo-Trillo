@@ -56,10 +56,14 @@ def create_category(request):
             return render(request, "create_category.html", context = context)
 
 def list_products(request): 
-    list_products = products.objects.all()
-    context = {
-            'products' : list_products,
-        }
+    if 'search' in request.GET:
+        search = request.GET['search']
+        Products = products.object.filter(name__icontains=search)
+    else:
+        Products = products.objects.all()
+        context = {
+                'products' : Products,
+            }
     return render(request, "list_products.html", context=context)
 
 def list_categories(request):
