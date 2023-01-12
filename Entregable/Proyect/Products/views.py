@@ -57,17 +57,21 @@ def create_category(request):
 
 def list_products(request): 
     if 'search' in request.GET:
-        Search = request.GET["Search"]
-        Products = products.object.filter(name__icontains = Search)
+        search = request.GET['search']
+        Products_list = products.objects.filter(name__icontains = search)
     else:
-        Products = products.objects.all()
-        context = {
-                'products': Products,
-            }
-    return render(request, "list_products.html", context = context)
+        Products_list = products.objects.all()
+    context = {
+            'products': Products_list,
+        }
+    return render(request, "list_products.html", context=context)
 
 def list_categories(request):
-    all_categories = category.objects.all()
+    if 'search' in request.GET:
+        search = request.GET['search']
+        all_categories = category.objects.filter(name__icontains = search)
+    else:
+        all_categories = category.objects.all()
     context = {
         'categories':all_categories,
     }
@@ -99,7 +103,11 @@ def add_provider(request):
         return render(request, "create_category.html", context = context)
 
 def list_providers(request):
-    all_providers = providers.objects.all()
+    if 'search' in request.GET:
+        search = request.GET['search']
+        all_providers = providers.objects.filter(name__icontains = search)
+    else:
+        all_providers = providers.objects.all()
     context = {
         'providers': all_providers,
     }
