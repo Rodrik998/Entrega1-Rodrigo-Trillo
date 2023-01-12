@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,45 +8,52 @@
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <title>{% block title %} {% endblock %}</title>
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="/">Inicio</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarScroll">
-            <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                        Proveedores
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/productos/añadir-proveedor/">Añadir proveedor</a></li>
-                        <li><a class="dropdown-item" href="/productos/ver-proveedores/">Ver proveedores</a></li>
+                <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 150px;">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                            aria-expanded="false">
+                            Proveedores
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/productos/añadir-proveedor/">Añadir proveedor</a></li>
+                            <li><a class="dropdown-item" href="/productos/ver-proveedores/">Ver proveedores</a></li>
+                        </ul>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                            aria-expanded="false">
+                            Productos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/productos/crear/">Añadir producto</a></li>
+                            <li><a class="dropdown-item" href="/productos/listar/">Ver productos</a></li>
+                        </ul>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                            aria-expanded="false">
+                            Categorias
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/productos/crear-categorias/">Añadir categoria</a></li>
+                            <li><a class="dropdown-item" href="/productos/ver-categorias/">Ver categorias</a></li>
+                        </ul>
                 </ul>
-                <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                    Productos
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/productos/crear/">Añadir producto</a></li>
-                    <li><a class="dropdown-item" href="/productos/listar/">Ver productos</a></li>
-                </ul>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                        Categorias
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/productos/crear-categorias/">Añadir categoria</a></li>
-                        <li><a class="dropdown-item" href="/productos/ver-categorias/">Ver categorias</a></li>
-                </ul>
-            </ul>
-            <form class="d-flex" action="/productos/listar/" method="GET"> 
-                <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form> 
             </div>
+            {% block navbar %} 
+            <form class="form-inline my-2 my-lg-0" action="" method="GET">
+                <input class="form-control mr-sm-2" type="Search" placeholder="Search" aria-label="Search" name="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+            </form>
+            {% endblock %}
         </nav>
     </header>
 
@@ -60,4 +68,5 @@
         integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
         crossorigin="anonymous"></script>
 </body>
+
 </html>
