@@ -7,8 +7,8 @@ from django.contrib.auth import login, authenticate
 from users.models import UserProfile
 from users.forms import RegisterForm #UserUpdateForm, UserProfileForm
 
-def login_view(request): #? Si ingresamos por un Get nos muestra el formulario de inicio de sesion
-    if request.method == 'GET':
+def login_view(request): #? Funcion de inicio de sesión
+    if request.method == 'GET': #? Si ingresamos por un Get nos muestra el formulario de inicio de sesion
         form = AuthenticationForm()
         context = {
             'form':form
@@ -30,7 +30,7 @@ def login_view(request): #? Si ingresamos por un Get nos muestra el formulario d
                 }
                 return render(request, 'index.html', context=context)
 
-def register(request):
+def register(request): #? Funcion de creación de usuario
     if request.method == 'GET':
         form = RegisterForm()
         context ={
@@ -41,7 +41,7 @@ def register(request):
     elif request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
-            user = form.save() #al hacer el save, se crea el usuario
+            user = form.save() 
             UserProfile.objects.create(user = user)
             return redirect('login')
         

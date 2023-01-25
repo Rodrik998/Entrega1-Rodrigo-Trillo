@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView
 
 from Products.models import products, category, providers
 from Products.forms import ProductForms, CategoryForms, ProviderForms
@@ -66,6 +68,7 @@ def list_products(request):
         }
     return render(request, "list_products.html", context=context)
 
+@login_required
 def list_categories(request):
     if 'search' in request.GET:
         search = request.GET['search']
@@ -112,3 +115,8 @@ def list_providers(request):
         'providers': all_providers,
     }
     return render(request, "list_providers.html", context=context)
+
+class ProvidersListView(LoginRequiredMixin, ListView):
+    model = providers
+    template_name = 'list_providers.html'
+    queryset = providers.objects.filter(is_active = True)
