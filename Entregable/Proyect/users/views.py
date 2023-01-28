@@ -78,13 +78,14 @@ def UpdateUser(request):
         }
     return render(request, 'update.html', context=context)
 
+@login_required
 def UpdateProfile(request):
     user = request.user
     if request.method == 'GET':
         form = UserProfileForm(initial={
             'phone':request.user.profile.phone,
             'birth_date':request.user.profile.birth_date,
-            #'profile_picture':request.user.profile.profile_picture,
+            'profile_images':request.user.profile.profile_picture,
         })
         context ={
             'form':form
@@ -96,7 +97,7 @@ def UpdateProfile(request):
         if form.is_valid():
             user.profile.phone = form.cleaned_data.get('phone')
             user.profile.birth_date = form.cleaned_data.get('birth_date')
-            #user.profile.profile_picture = form.cleaned_data.get('profile_picture')
+            user.profile.profile_picture = form.cleaned_data.get('profile_images')
             user.profile.save()
             return redirect('index')
         

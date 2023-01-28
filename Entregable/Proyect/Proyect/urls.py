@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
 
+from Proyect.settings import MEDIA_ROOT, MEDIA_URL
 from Proyect.views import index
 
 urlpatterns = [
@@ -9,4 +11,4 @@ urlpatterns = [
 
     path('productos/', include('Products.urls')),
     path('usuario/', include('users.urls')),
-]
+] + static(MEDIA_URL, document_root = MEDIA_ROOT)
