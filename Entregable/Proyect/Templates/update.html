@@ -1,11 +1,13 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+
+{% include "" %}
 
 {% block title %}
-    Login
+    Actualizacion de usuario
 {% endblock %}
 
 {% block content %}
-    <h1>ingresa tus datos para loguearte</h1>
+    <h1>Actualizar informacion</h1>
 
     {% if form %}
         <form action="" method="POST">
@@ -13,11 +15,12 @@
             <table>
                 {{form.as_table}}
             </table>
-            {% if errors %}
-                <p style="color:red;">{{errors}}</p>
-            {% endif %}
-            <input type="submit" value="Ingresar">
+            <input type="submit" value="Actualizar">
         </form>
+    {% endif %}
+
+    {% if errors %}
+        {{errors}}
     {% endif %}
 
 {% endblock %}

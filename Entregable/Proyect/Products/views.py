@@ -57,6 +57,7 @@ def create_category(request):
             }
             return render(request, "create_category.html", context = context)
 
+@login_required
 def list_products(request): 
     if 'search' in request.GET:
         search = request.GET['search']

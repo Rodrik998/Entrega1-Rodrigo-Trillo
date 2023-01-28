@@ -50,11 +50,19 @@
                         <li class="nav-item" style="margin-left: 900px;">
                             <a class="nav-link" href="/usuario/logout/">Logout</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/usuario/update/">{{request.user.username}}</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                                aria-expanded="false">
+                                {{request.user.username}}
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/usuario/update/">Actualizar usuario</a></li>
+                                <li><a class="dropdown-item" href="/usuario/update_profile/">Actualizar perfil</a></li>
+                            </ul>
                         </li>
                         {% if request.user.profile.profile_picture.url != '' %}
-                            <img src="{{request.user.profile.profile_picture.url}}" alt="profile_picture" width="50px" height="50px">
+                            <img src="{{request.user.profile.profile_picture.url}}" alt="profile_picture" width="50px" height="50px" 
+                                class="d-inline-block align-top"/>
                         {% endif %}
                     {% else %}
                         <li class="nav-item" style="margin-left: 900px;">
@@ -67,10 +75,10 @@
                 </ul>
             </div>
             {% block navbar %} 
-            <form class="form-inline my-2 my-lg-0" action="" method="GET">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-            </form>
+                <form class="form-inline my-2 my-lg-0" action="" method="GET">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" name="search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                </form>
             {% endblock %}
         </nav>
     </header>
