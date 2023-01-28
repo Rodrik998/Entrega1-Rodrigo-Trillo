@@ -57,11 +57,11 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/usuario/update/">Actualizar usuario</a></li>
-                                <li><a class="dropdown-item" href="/usuario/update_profile/">Actualizar perfil</a></li>
+                                <li><a class="dropdown-item" href="/usuario/update-profile/">Actualizar perfil</a></li>
                             </ul>
                         </li>
                         {% if request.user.profile.profile_picture.url != '' %}
-                            <img src="{{request.user.profile.profile_images.url}}" alt="profile_images" width="50px" height="50px" 
+                            <img src="{{request.user.profile.profile_picture.url}}" alt="profile_picture" width="50px" height="50px" 
                                 class="d-inline-block align-top"/>
                         {% endif %}
                     {% else %}

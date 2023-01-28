@@ -42,7 +42,7 @@ def register(request): #? Funcion de creación de usuario
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save() 
-            UserProfile.objects.create(user = user)
+            UserProfile.objects.create(user=user)
             return redirect('login')
         
         context = {
@@ -85,7 +85,7 @@ def UpdateProfile(request):
         form = UserProfileForm(initial={
             'phone':request.user.profile.phone,
             'birth_date':request.user.profile.birth_date,
-            'profile_images':request.user.profile.profile_picture,
+            'profile_picture':request.user.profile.profile_picture
         })
         context ={
             'form':form
@@ -94,10 +94,12 @@ def UpdateProfile(request):
 
     elif request.method == 'POST':
         form = UserProfileForm(request.POST, request.FILES)
+        print(request.POST)
+        print(request.FILES)
         if form.is_valid():
             user.profile.phone = form.cleaned_data.get('phone')
             user.profile.birth_date = form.cleaned_data.get('birth_date')
-            user.profile.profile_picture = form.cleaned_data.get('profile_images')
+            user.profile.profile_picture = form.cleaned_data.get('profile_picture')
             user.profile.save()
             return redirect('index')
         
