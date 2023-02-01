@@ -25,10 +25,7 @@ def login_view(request): #? Funcion de inicio de sesión
 
             if user is not None:
                 login(request, user)
-                context = {
-                    'message':f'Bienvenido {username}!!!'
-                }
-                return render(request, 'index.html', context=context)
+                return redirect('index')
 
 def register(request): #? Funcion de creación de usuario
     if request.method == 'GET':

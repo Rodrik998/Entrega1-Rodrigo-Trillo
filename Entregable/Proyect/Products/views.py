@@ -86,34 +86,29 @@ def list_categories(request):
 
 @user_is_admin
 def add_provider(request):
-    if request.products.is_superuser:
-        if request.method == 'GET':
+    if request.method == 'GET':
+        context = {
+            'form': ProviderForms()
+        }
+        return render (request, "add_provider.html", context=context)
+    elif request.method == 'POST':
+        form = ProviderForms(request.POST)
+        if form.is_valid():
+            providers.objects.create(
+                name = form.cleaned_data['name'],
+                provides = form.cleaned_data['provides'],
+            )
             context = {
-                'form': ProviderForms()
+                'message': 'Proveedor añadido con éxito'
             }
             return render (request, "add_provider.html", context=context)
-        elif request.method == 'POST':
-            form = ProviderForms(request.POST)
-            if form.is_valid():
-                providers.objects.create(
-                    name = form.cleaned_data['name'],
-                    provides = form.cleaned_data['provides'],
-                )
-                context = {
-                    'message': 'Proveedor añadido con éxito'
-                }
-                return render (request, "add_provider.html", context=context)
-            else:
-                context = {
-                    'form_errors': form.errors,
-                    'form': ProviderForms()
-                }
-                return render(request, "create_category.html", context = context)
-    else:
-        context = {
-            'message': 'No tienes acceso a esta información'
-        }
-        return render(request, 'errors.html', context=context)
+        else:
+            context = {
+                'form_errors': form.errors,
+                'form': ProviderForms()
+            }
+            return render(request, "create_category.html", context = context)
+
 
 @user_is_admin
 def list_providers(request):
