@@ -59,6 +59,7 @@ def UpdateUser(request):
             'username':user.username,
             'name':user.first_name,
             'last_name':user.last_name,
+            'email':user.email,
         })
         context = {
             'form':form
@@ -70,6 +71,7 @@ def UpdateUser(request):
             user.username = form.cleaned_data.get('username')
             user.name = form.cleaned_data.get('name')
             user.last_name = form.cleaned_data.get('last_name')
+            user.email = form.cleaned_data.get('email')
             user.save()
         
         context = {
@@ -94,8 +96,6 @@ def UpdateProfile(request):
 
     elif request.method == 'POST':
         form = UserProfileForm(request.POST, request.FILES)
-        print(request.POST)
-        print(request.FILES)
         if form.is_valid():
             user.profile.phone = form.cleaned_data.get('phone')
             user.profile.birth_date = form.cleaned_data.get('birth_date')

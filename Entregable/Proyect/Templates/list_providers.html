@@ -7,7 +7,7 @@
 {% block navbar %}
 
     <form class="form-inline my-2 my-lg-0" action="/productos/ver-proveedores/" method="GET">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+        <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="search" name="search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
     </form>
 
@@ -16,15 +16,14 @@
 {% block content %}
 
     {% for provider in providers %}
-    <div class="card">
-        <ul class="list-group list-group-flush">
-            <div class="card-header" style="text-align: center;">
-                Proveedor: {{provider.name}}
-            </div> 
-            <li class="list-group-item mb-3 mt-3" style="text-align: center;">Provee: {{provider.provides}} </li>
-        </ul>
-    </div>
-
+        <div class="card">
+            <ul class="list-group list-group-flush">
+                <div class="card-header" style="text-align: center;">
+                    Proveedor: {{provider.name}}
+                </div> 
+                <li class="list-group-item mb-3 mt-3" style="text-align: center;">Provee: {{provider.provides}} </li>
+            </ul>
+        </div>
     {% endfor %}
 
 {% endblock content %}

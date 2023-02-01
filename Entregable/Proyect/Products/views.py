@@ -1,25 +1,27 @@
 from django.shortcuts import render
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView
+
+from Proyect.decorators import user_is_admin
 
 from Products.models import products, category, providers
 from Products.forms import ProductForms, CategoryForms, ProviderForms
 
+
+@user_is_admin
 def create_product(request):
     if request.method == 'GET': #? Si el programa esta entrando por un metodo 'get' mostramos el formulario de create_product.html
         context = {
             'form': ProductForms()
         }
         return render (request, 'create_products.html', context = context)
-
-    elif request.method == 'POST': #?Si entramos por metdo 'post' se valida que los datos ingresados sean correctos antes de mostrar el formulario
-        form = ProductForms(request.POST)
+    elif request.method == 'POST': #?Si entramos por metodo 'post' se valida que los datos ingresados sean correctos antes de mostrar el formulario
+        form = ProductForms(request.POST, request.FILES)
         if form.is_valid():
             products.objects.create(
                 name = form.cleaned_data['name'],
                 price = form.cleaned_data['price'],
                 stock = form.cleaned_data['stock'],
+                image = form.cleaned_data['image'],
             )
             context = {
                 'message': 'Producto creado exitosamente'
@@ -32,6 +34,7 @@ def create_product(request):
             }
             return render(request, 'create_products.html', context=context)
 
+@user_is_admin
 def create_category(request):
     if request.method == 'GET':
         context = {
@@ -81,31 +84,38 @@ def list_categories(request):
     }
     return render(request, "list_categories.html", context=context)
 
+@user_is_admin
 def add_provider(request):
-    if request.method == 'GET':
-        context = {
-            'form': ProviderForms()
-        }
-        return render (request, "add_provider.html", context=context)
-
-    elif request.method == 'POST':
-        form = ProviderForms(request.POST)
-        if form.is_valid():
-            providers.objects.create(
-                name = form.cleaned_data['name'],
-                provides = form.cleaned_data['provides'],
-            )
+    if request.products.is_superuser:
+        if request.method == 'GET':
             context = {
-                'message': 'Proveedor añadido con éxito'
-            }
-            return render (request, "add_provider.html", context=context)
-        else:
-            context = {
-                'form_errors': form.errors,
                 'form': ProviderForms()
             }
-        return render(request, "create_category.html", context = context)
+            return render (request, "add_provider.html", context=context)
+        elif request.method == 'POST':
+            form = ProviderForms(request.POST)
+            if form.is_valid():
+                providers.objects.create(
+                    name = form.cleaned_data['name'],
+                    provides = form.cleaned_data['provides'],
+                )
+                context = {
+                    'message': 'Proveedor añadido con éxito'
+                }
+                return render (request, "add_provider.html", context=context)
+            else:
+                context = {
+                    'form_errors': form.errors,
+                    'form': ProviderForms()
+                }
+                return render(request, "create_category.html", context = context)
+    else:
+        context = {
+            'message': 'No tienes acceso a esta información'
+        }
+        return render(request, 'errors.html', context=context)
 
+@user_is_admin
 def list_providers(request):
     if 'search' in request.GET:
         search = request.GET['search']
@@ -117,7 +127,3 @@ def list_providers(request):
     }
     return render(request, "list_providers.html", context=context)
 
-class ProvidersListView(LoginRequiredMixin, ListView):
-    model = providers
-    template_name = 'list_providers.html'
-    queryset = providers.objects.filter(is_active = True)

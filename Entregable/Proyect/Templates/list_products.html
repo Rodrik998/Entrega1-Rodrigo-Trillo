@@ -6,8 +6,8 @@
 
 {% block navbar %}
 
-    <form class="form-inline my-2 my-lg-0" action="/productos/list" method="GET">
-        <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" name="search">
+    <form class="form-inline my-2 my-lg-0" action="/productos/listar/" method="GET">
+        <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="search" name="search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
     </form>
 
@@ -22,7 +22,10 @@
     {% endif %}
 
     {% for product in products %} 
-        <div class="card" style="width: 18rem;">
+        <div class="card" enctype="multipart/form-data" style="width: 18rem;">
+            {% if product.image.url != '' %}
+                <img src="{{product.image.url}}" class="card-img-top" alt="">
+            {% endif %}
             <div class="card-body">
             <h5 class="card-title">{{product.name}}</h5>
             <p class="card-text">Su precio es ${{product.price}}</p>

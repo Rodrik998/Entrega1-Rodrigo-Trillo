@@ -4,6 +4,7 @@ class ProductForms(forms.Form):
     name = forms.CharField(max_length=50)
     price = forms.FloatField()
     stock = forms.BooleanField(required=False)
+    image = forms.ImageField()
 
 class CategoryForms(forms.Form):
     name = forms.CharField(max_length=50)

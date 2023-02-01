@@ -19,15 +19,17 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 150px;">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                            aria-expanded="false">
-                            Proveedores
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/productos/añadir-proveedor/">Añadir proveedor</a></li>
-                            <li><a class="dropdown-item" href="/productos/ver-proveedores/">Ver proveedores</a></li>
-                        </ul>
+                    {% if request.user.is_superuser %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                                aria-expanded="false">
+                                Proveedores
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/productos/añadir-proveedor/">Añadir proveedor</a></li>
+                                <li><a class="dropdown-item" href="/productos/ver-proveedores/">Ver proveedores</a></li>
+                            </ul>
+                    {% endif %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                             aria-expanded="false">
