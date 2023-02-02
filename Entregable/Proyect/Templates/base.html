@@ -36,7 +36,9 @@
                             Productos
                         </a>
                         <ul class="dropdown-menu">
+                            {% if request.user.is_authenticated %}
                             <li><a class="dropdown-item" href="/productos/crear/">Añadir producto</a></li>
+                            {% endif %}
                             <li><a class="dropdown-item" href="/productos/listar/">Ver productos</a></li>
                         </ul>
                     <li class="nav-item dropdown">
@@ -45,7 +47,9 @@
                             Categorias
                         </a>
                         <ul class="dropdown-menu">
+                            {% if request.user.is_authenticated %}
                             <li><a class="dropdown-item" href="/productos/crear-categorias/">Añadir categoria</a></li>
+                            {% endif %}
                             <li><a class="dropdown-item" href="/productos/ver-categorias/">Ver categorias</a></li>
                         </ul>
                     {% if request.user.is_authenticated %}
@@ -97,10 +101,10 @@
             <!-- About us -->
             <a
             class="btn btn-link btn-floating btn-lg text-dark m-1"
-            href="/sobre-mi/"
+            href="/sobre-nosotros/"
             role="button"
             data-mdb-ripple-color="dark"
-            >Sobre Mi</a>
+            >Sobre nosotros</a>
 
             <!-- Contactanos -->
             <a
@@ -137,6 +141,5 @@
         integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
         crossorigin="anonymous"></script>
 </body>
-
 
 </html>
