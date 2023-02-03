@@ -22,19 +22,19 @@
     {% endif %}
 
     {% for product in products %} 
-        <div class="card" enctype="multipart/form-data" style="width: 18rem;">
+        <div class="card mb-3 mt-3 flex border-success" style="max-width: 20rem; text-align:center; display: inline-flex; margin-left: 10px;">
             {% if product.image.url != '' %}
                 <img src="{{product.image.url}}" class="card-img-top" alt="">
             {% endif %}
             <div class="card-body">
-            <h5 class="card-title">{{product.name}}</h5>
-            <p class="card-text">Su precio es ${{product.price}}</p>
-            {% if product.stock == True %}
-                <p>Actualmente hay stock</p>
-            {% else %}
-                <p>Actualmente, nos quedamos sin stock</p>
-            {% endif %}
-            <a href="/productos/ver-proveedores/" class="btn btn-primary">Consultar</a>
+                <h5 class="card-title">{{product.name}}</h5>
+                <p class="card-text">Su precio es ${{product.price}}</p>
+                {% if product.stock == True %}
+                    <p>Actualmente hay stock</p>
+                    <button class="button">Comprar</button>
+                {% else %}
+                    <p>Actualmente, nos quedamos sin stock</p>
+                {% endif %}
             </div>
         </div>
     {% endfor %}
