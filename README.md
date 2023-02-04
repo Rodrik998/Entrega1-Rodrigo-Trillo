@@ -8,9 +8,13 @@ Este proyecto que hice consiste en crear una página web para una empresa famili
 Para esta página use solo la aplicación base al iniciar Django (Proyect), y luego cree 2 aplicaciones más (users y Products), pero no agregue la posibilidad de hacer ordenes de compras todavía. Tambien vale aclarar que se pueden crear cuentas de dos "niveles" diferentes, una es la cuenta basica de cliente que permite ver la lista de productos y las categorias de los mismos, y por supuesto crearse una cuenta; y el segundo "nivel" de cuenta es el de administrador, en el cual por supuesto ya es posible hacer muchas mas cosas y gestionar todo, como los productos que si tienen stock o no, o los precios de los mismos.
 
 
+## *link al video del proyecto*
+
+link: ```https://drive.google.com/file/d/1fx1VAlMw-Xiq5mSgDqVhXn9Tzy64AmMn/view?usp=sharing```
+
 ### Cómo ejecutar el proyecto
 - Instalar Python
-- Clonar el proyecto con ``` git clone https://github.com/Rodrik998/Entrega1-Rodrigo-Trillo```
+- Clonar el proyecto con ```git clone https://github.com/Rodrik998/Entrega1-Rodrigo-Trillo```
 - Crear entorno virtual con `Pipenv` o `virtualenv` y activarlo.
 - Instalar los requerimientos
 ```
