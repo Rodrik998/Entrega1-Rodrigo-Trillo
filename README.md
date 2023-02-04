@@ -2,24 +2,16 @@
 
 ## *Presentación de proyecto*
 
- Base el proyecto en mi local favorito de hamburguesas "FIVE GUYS". El concepto de la tienda es vender hamburguesas premiun del tipo caseras y el cliente le puede agregar todos los toppings que quiera sin costo adicional. 
- 
- La tienda se especializa en hamburguesas y solo ofrece un menu alternativo, hot dogs.Tambien venden papas fritas, postres y bebidas. El menu esta estandarizado, es decir, es fijo y siempre es el mismo en todos los diferentes locales y franquicias de la marca.
+El proyecto lo hice yo solo y consiste en crear una página web para una empresa familiar llamada Coberplast, la cual se dedica a la venta de varios productos, de los cuales para este proyecto solo agarre unos pocos, en realidad tiene mucha mas variedad. Coberplast vende a consumidores finales o al mayor para otros distribuidores o ferreterias mas pequeñas.
 
-Realice los modelos productos (products), locales (location) y clientes (costumer). Luego tambien la aplicaciones usuarios (users).
 
-La idea es que segun el nivel del usuario se vaya modificando los diferentes  accesos y funcionalidades.
+Para esta página use solo la aplicación base al iniciar Django (Proyect), y luego cree 2 aplicaciones más (users y Products), pero no agregue la posibilidad de hacer ordenes de compras todavía. Tambien vale aclarar que se pueden crear cuentas de dos "niveles" diferentes, una es la cuenta basica de cliente que permite ver la lista de productos y las categorias de los mismos, y por supuesto crearse una cuenta; y el segundo "nivel" de cuenta es el de administrador, en el cual por supuesto ya es posible hacer muchas mas cosas y gestionar todo, como los productos que si tienen stock o no, o los precios de los mismos.
 
-Para un usuario sin logerse o un usuario basico del tipo cliente, solo estaran disponibles las visualizaciones generales de la marca, la del menu, la de los distintos puntos de venta y la posibilidade de registrarse.
-
-Para un usuario intermedio del tipo 'staff' agregamos la posibilidad de visualizar el listado de clientes con sus datos personales como asi tambien la posibilidad de actualizar, agregar y borrar los mismos.
-
-Para un usuario del mas alto nivel del tipo 'superuser' agregamos la posibilidad de sumar opcines al menu de comidas (aunque esta tienda como dije tiene  menu fijo), como asi tambien la posibilidad de agregar/actualizar/borrar locales o franquicias al listado de locales.
 
 ### Cómo ejecutar el proyecto
 - Instalar Python
-- Clonar el proyecto con ``` git clone github.com/JFGILI/Proyecto-final.git```
-- Crear entorno virtual con `Pipenv` or `virtualenv` and activate it.
+- Clonar el proyecto con ``` git clone https://github.com/Rodrik998/Entrega1-Rodrigo-Trillo```
+- Crear entorno virtual con `Pipenv` o `virtualenv` y activarlo.
 - Instalar los requerimientos
 ```
     pip install -r requirements.txt
@@ -35,9 +27,9 @@ Para un usuario del mas alto nivel del tipo 'superuser' agregamos la posibilidad
 ```
     python manage.py runserver
 
-# Desarrollador del proyecto:
+# Desarrollador del proyecto: [Rodrigo Ezequiel Trillo]
 ## BackEnd
-### | [Juan Francisco GILI TOMLIENOVICH ](https://www.linkedin.com/in/juan-francisco-gili-tomlienovich-30494b23a) | 
- [<img src=](https://github.com/JFGILI) 
+### | (https://www.linkedin.com/in/rodrigo-ezequiel-trillo-5114001b1/) | 
+ [<img src=""](https://github.com/Rodrik998) 
 
 
