@@ -29,6 +29,10 @@
                                 <li><a class="dropdown-item" href="/productos/añadir-proveedor/">Añadir proveedor</a></li>
                                 <li><a class="dropdown-item" href="/productos/ver-proveedores/">Ver proveedores</a></li>
                             </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://localhost:8000/admin/">Admin</a>
+                        </li>
                     {% endif %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
@@ -36,7 +40,7 @@
                             Productos
                         </a>
                         <ul class="dropdown-menu">
-                            {% if request.user.is_authenticated %}
+                            {% if request.user.is_superuser %}
                             <li><a class="dropdown-item" href="/productos/crear/">Añadir producto</a></li>
                             {% endif %}
                             <li><a class="dropdown-item" href="/productos/listar/">Ver productos</a></li>
@@ -47,13 +51,13 @@
                             Categorias
                         </a>
                         <ul class="dropdown-menu">
-                            {% if request.user.is_authenticated %}
+                            {% if request.user.is_superuser %}
                             <li><a class="dropdown-item" href="/productos/crear-categorias/">Añadir categoria</a></li>
                             {% endif %}
                             <li><a class="dropdown-item" href="/productos/ver-categorias/">Ver categorias</a></li>
                         </ul>
                     {% if request.user.is_authenticated %}
-                        <li class="nav-item" style="margin-left: 900px;">
+                        <li class="nav-item" style="margin-left: 800px;">
                             <a class="nav-link" href="/usuario/logout/">Logout</a>
                         </li>
                         <li class="nav-item dropdown">
